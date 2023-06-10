@@ -7,22 +7,11 @@ function solution(quiz) {
 }
 
 function checkValidation(str){
-    let arr = str.split(' ');
-    let num =0;
-    let result;
-    let cal = true;
-    arr.forEach(v=>{
-        if(v!='='){
-            if(v!='+' && v!='-'){
-                cal ? num+=Number(v) : cal==null ? result=Number(v) : num-=Number(v); 
-            }else{
-                v=='+' ? cal=true : cal=false;
-            }
-        }else{
-            cal=null;
-        }
-    })
+    let [cal,result]=str.split(' = ');
+    let [num1,oper,num2]=cal.split(' ');
+    let number;
+    oper=='+'?  number=Number(num1)+Number(num2) : number=Number(num1)-Number(num2);
     let answer;
-    num==result ? answer="O" : answer="X";
+    number==Number(result) ? answer="O" : answer="X";
     return answer;
 }
