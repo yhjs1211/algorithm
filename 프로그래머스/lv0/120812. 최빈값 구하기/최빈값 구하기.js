@@ -1,27 +1,21 @@
 function solution(array) {
- 
-    let m = new Map();
-    
-    array.forEach(v=>{
-        if(m.has(v)){
-            m.set(v,m.get(v)+1);
+    let obj={}
+    for(let i in array){
+        if(obj[array[i]]==undefined){
+           obj[array[i]]=1;
         }else{
-            m.set(v,1);
+            obj[array[i]]++;
         }
-    });
-
-    let tmp = 0;
-    let answer = 0;
-    m.forEach((v,k)=>{
-        if(v>tmp){
-            answer=k;
-            tmp=v;
-        }else if(v==tmp){
+    }
+    let answer=0;
+    let tmp=0;
+    Object.entries(obj).forEach(v=>{
+        if(tmp<v[1]){
+            answer=Number(v[0]);
+            tmp=v[1];
+        }else if(tmp==v[1]){
             answer=-1;
         }
     })
-
-
-
     return answer;
 }
