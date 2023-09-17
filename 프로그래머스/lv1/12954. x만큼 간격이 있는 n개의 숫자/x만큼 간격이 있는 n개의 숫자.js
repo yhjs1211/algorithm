@@ -1,9 +1,7 @@
 function solution(x, n) {
-    let answer = [];
-    let num=x;
+    const answer = [];
     for(let i=0; i<n; i++){
-        answer.push(num);
-        num+=x;
+        answer[i]=x*(i+1);
     }
     return answer;
 }
