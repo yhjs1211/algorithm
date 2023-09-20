@@ -1,14 +1,24 @@
 function solution(arr) {
-    let tmp=arr[0];
-    if(arr.length!=1){
-        for(let i=1; i<arr.length; i++){
-            if(tmp>arr[i])tmp=arr[i];
-        }
-        while(arr.includes(tmp)){
-            arr.splice(arr.indexOf(tmp),1);
-        }
+    let answer = [];
+    let min;
+    let minIdx;
+    if(arr.length==1){
+        answer.push(-1);
     }else{
-        return [-1];
+        arr.forEach((v,idx)=>{
+            if(minIdx){
+                if(arr[minIdx]>v){
+                    minIdx=idx;     
+                }
+            }else{
+                minIdx=idx;
+            }
+        });
+        arr.forEach((v,idx)=>{
+        idx!==minIdx
+            ? answer.push(v)
+            : null
+        })    
     }
-    return arr;
+    return answer;
 }
