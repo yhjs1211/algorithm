@@ -1,9 +1,10 @@
 function solution(phone_number) {
-    let answer;
-    let arr = phone_number.split('');
-    for(let i=0; i<arr.length-4; i++){
-        arr[i]='*';
+    let answer = '';
+    const len = phone_number.length;
+    for(let i=0; i<len; i++){
+        i < len-4
+            ? answer+='*'
+            : answer+=phone_number[i]
     }
-    answer=arr.join('');
     return answer;
 }
